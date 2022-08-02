@@ -1,0 +1,23 @@
+.form-control{
+    display: inline-block !important;
+}
+#input1{
+    width: 200px;
+    display: inline-block !important;
+}
+#input2{
+    width: 200px;
+    display: inline-block !important;
+}
+#input3{
+    width: 200px;
+    display: inline-block !important;
+}
+#input4{
+    width: 200px;
+    display: inline-block !important;
+}
+.btn-success{
+    display: inline-block !important;
+    margin-top: 23px;
+}
