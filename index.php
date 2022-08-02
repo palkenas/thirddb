@@ -4,8 +4,11 @@ include './controllers/UserController.php';
 // --------------issaugojimas--------------
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
     if (isset($_POST['save'])) {
-        UserController::store();
-        header("Location:" . $_SERVER['REQUEST_URI']);
+        $hasErrors = UserController::store();
+        if (!$hasErrors) {
+            header("Location:" . $_SERVER['REQUEST_URI']);
+        }
+        // 
         // neis po reloadinimo uzklausos
     }
     if (isset($_POST['edit'])) {
@@ -41,6 +44,15 @@ $users = UserController::index();
 <body>
 
     <div class="container">
+        <?php if (isset($_SESSION) && isset($_SESSION['errors'])) {
+            foreach ($_SESSION['errors'] as $error) { ?>
+                <div class="alert alert-danger" role="allert">
+                    <?= $error; ?>
+                </div>
+        <?php  }
+        unset($_SESSION['errors']);
+    } 
+        ?>
 
         <form id="form" class="form-inline" action="" method="post">
             <div class="form-row">
